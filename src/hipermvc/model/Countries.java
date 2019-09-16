@@ -10,7 +10,6 @@ import java.util.Set;
  */
 public class Countries  implements java.io.Serializable {
 
-
      private String countryId;
      private Regions regions;
      private String countryName;
