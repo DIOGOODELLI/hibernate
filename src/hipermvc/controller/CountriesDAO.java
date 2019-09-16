@@ -10,23 +10,9 @@ import hipermvc.model.Regions;
 import java.math.BigDecimal;
 import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-
-/*
-
-SELECT
-    a.end_date,
-    b.department_name,
-    c.last_name,
-    d.job_title
-FROM
-    hr.job_history a
-JOIN HR.departments b on a.department_id = b.department_id 
-JOIN HR.employees c ON a.employee_id = c.employee_id
-JOIN HR.jobs d on c.job_id = d.job_id
-*/
 
 public class CountriesDAO 
 {    
@@ -37,7 +23,6 @@ public class CountriesDAO
    {
        session.save(c);
    }
-    
    
    public static void Update (Countries c)
    {
@@ -48,20 +33,9 @@ public class CountriesDAO
    {
        session.delete(c);
    }
-    
-    
+   
     public static List<Object[]> Lista()
-    {      
-        
-        //List<Countries> list;
-        //Query query = session.createQuery("From hipermvc.model.Countries a where COUNTRY_ID= :id ");
-        //query.setParameter("id", "IT");
-        //list = query.list();
-        //list.forEach((cob) -> {
-        //    System.out.println(cob.getCountryName());
-       //});  
-       
-    
+    {          
         session = HibernateUtil.getSessionFactory().openSession();
         tr = session.beginTransaction();
 
@@ -85,6 +59,11 @@ public class CountriesDAO
             System.out.println(red.getRegionName());
       
         });
+            
+  
+    
+    
+    
         
 
         tr.commit();
@@ -97,25 +76,31 @@ public class CountriesDAO
     
     
     public static void Lista2()
-    { 
-        List<Object[]> listaJoin1 = session.createQuery(
-        "From hipermvc.model.Countries a,hipermvc.model.Regions b "
-                  + "where a.regions = b.regionId").list();
+    {
+        //join direto A
+        String a = "From hipermvc.model.Countries a,hipermvc.model.Regions b "
+                  + "where a.regions = b.regionId";
         
-        List<Object[]> listaJoin2 = session.createQuery(
-        "select con.countryName, reg.regionName from Countries con "
-                + "left join con.regions reg")
+        
+        // join simples e direto
+        String b = "select con.countryName, reg.regionName from Countries con "
+                + "left join con.regions reg";
+        
+        
+        
+        //Mais de um join 
+        String q = "select b.departmentName from JobHistory a "
+                + "join a.departments b "
+                + "join a.employees c "
+                + "join c.jobs d ";
+        
+        
+        //Object [] -> se tem mais de um
+        List<String> lista = session.createQuery(q)
         .list();
-        
-        
-        List<Object[]> lista = session.createQuery(
-        "select con.countryName, reg.regionName from Countries con "
-                + "left join con.regions reg")
-        .list();
-        
-        
-        lista.forEach((Object[] result) -> {
-            System.out.println(result[1]);
+
+        lista.forEach((String result) -> {
+            System.out.println(result);
         });
     }
     
