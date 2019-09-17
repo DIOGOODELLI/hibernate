@@ -6,6 +6,10 @@
 package hipermvc.controller;
 
 import hipermvc.model.Countries;
+import hipermvc.model.Notas;
+import hipermvc.model.NotasId;
+import hipermvc.model.Notasitem;
+import hipermvc.model.NotasitemId;
 import hipermvc.model.Regions;
 import java.math.BigDecimal;
 import java.util.List;
@@ -58,19 +62,49 @@ public class CountriesDAO
             System.out.println(red.getRegionName());
       
         });
-            
-  
-    
-    
-    
-        
 
+            
         tr.commit();
         session.close();
        
         return lista;
     }
 
+    
+    
+    public static void InserirChaveComposta()
+    {
+        /*
+        String filial = "10";
+        int sequencia = 1;
+        int itemSequecia = 2;
+        double valor  = 100.3;
+        
+        NotasId notaid = new NotasId(Long.valueOf(filial), sequencia);
+        Notas notas = new Notas(notaid, BigDecimal.valueOf(valor));
+            
+        session.save(notas);   
+        
+        valor  = 500;
+        
+        NotasitemId notaitemid = new NotasitemId(Long.valueOf(filial), Long.valueOf(sequencia), Long.valueOf(itemSequecia));
+        Notasitem notasItem = new Notasitem(notaitemid, BigDecimal.valueOf(valor));
+        
+        session.save(notasItem);  
+        */  
+        
+        
+       //comando com chave composta!
+        String d = "select a.id.filial,b.valortotalitem from Notas a "
+                + "join a.notasitens b where a.id.filial = 10";
+      
+        String e = "";
+        
+        //Object [] -> se tem mais de um
+        List<int []> lista = session.createQuery(d)
+        .list();
+
+    }         
     
     
     
@@ -101,7 +135,6 @@ public class CountriesDAO
                 + "where a.salary > "
                 + "(select maxSalary from Jobs b where b.jobId = 'IT_PROG')";
         
-        
         String e = "";
         
         
@@ -130,7 +163,9 @@ public class CountriesDAO
             //Update (countries);
             //Delete (countries)
             
-            Lista2();
+            //Lista2();
+            
+            InserirChaveComposta();
             
             tr.commit();
             session.close();

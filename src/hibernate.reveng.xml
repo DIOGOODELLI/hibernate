@@ -10,4 +10,6 @@
   <table-filter match-name="LOCATIONS"/>
   <table-filter match-name="EMPLOYEES"/>
   <table-filter match-name="COUNTRIES"/>
+  <table-filter match-name="NOTAS"/>
+  <table-filter match-name="NOTASITEM"/>
 </hibernate-reverse-engineering>

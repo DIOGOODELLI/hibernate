@@ -27,6 +27,7 @@ public class Locations  implements java.io.Serializable {
         this.locationId = locationId;
         this.city = city;
     }
+    
     public Locations(short locationId, Countries countries, String streetAddress, String postalCode, String city, String stateProvince, Set departmentses) {
        this.locationId = locationId;
        this.countries = countries;

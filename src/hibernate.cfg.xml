@@ -46,6 +46,8 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
     <property name="hibernate.connection.username">SYSTEM</property>
     <property name="hibernate.connection.password">mdb123</property>
+    <property name="show_sql">true</property>
+    <property name="format_sql">true</property>
     <mapping resource="hipermvc/model/JobHistory.hbm.xml"/>
     <mapping resource="hipermvc/model/Departments.hbm.xml"/>
     <mapping resource="hipermvc/model/Employees.hbm.xml"/>
@@ -53,5 +55,8 @@ Contributor(s):
     <mapping resource="hipermvc/model/Jobs.hbm.xml"/>
     <mapping resource="hipermvc/model/Countries.hbm.xml"/>
     <mapping resource="hipermvc/model/Locations.hbm.xml"/>
+    <mapping resource="hipermvc/model/Notas.hbm.xml"/>
+    <mapping resource="hipermvc/model/NotasItem.hbm.xml"/>
+    
   </session-factory>
 </hibernate-configuration>

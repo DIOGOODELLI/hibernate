@@ -9,7 +9,6 @@ import java.util.Date;
  */
 public class JobHistory  implements java.io.Serializable {
 
-
      private JobHistoryId id;
      private Departments departments;
      private Jobs jobs;
