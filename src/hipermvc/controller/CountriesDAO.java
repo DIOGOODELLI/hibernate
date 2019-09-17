@@ -10,7 +10,6 @@ import hipermvc.model.Regions;
 import java.math.BigDecimal;
 import java.util.List;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -78,25 +77,36 @@ public class CountriesDAO
     public static void Lista2()
     {
         //join direto A
+
+        //primeiro From vai o name da classe no model
+        //depois disso vai os nomes do atributos no xml
+        //fora isso a formação do comando é o mesmo
+        
         String a = "From hipermvc.model.Countries a,hipermvc.model.Regions b "
                   + "where a.regions = b.regionId";
-        
         
         // join simples e direto
         String b = "select con.countryName, reg.regionName from Countries con "
                 + "left join con.regions reg";
         
-        
-        
         //Mais de um join 
-        String q = "select b.departmentName from JobHistory a "
+        String c = "select b.departmentName from JobHistory a "
                 + "join a.departments b "
                 + "join a.employees c "
                 + "join c.jobs d ";
         
+        //SubSelect + Join
+        String d = "select a.firstName from Employees a "
+                + "join a.jobs b "
+                + "where a.salary > "
+                + "(select maxSalary from Jobs b where b.jobId = 'IT_PROG')";
+        
+        
+        String e = "";
+        
         
         //Object [] -> se tem mais de um
-        List<String> lista = session.createQuery(q)
+        List<String> lista = session.createQuery(e)
         .list();
 
         lista.forEach((String result) -> {
