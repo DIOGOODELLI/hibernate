@@ -83,18 +83,10 @@ public class CountriesDAO
         NotasId notaid = new NotasId(Long.valueOf(filial), sequencia);
         Notas notas = new Notas(notaid, BigDecimal.valueOf(valor));
             
-        session.save(notas);   
+        session.save(notas); 
         
-        valor  = 500;
-        
-        NotasitemId notaitemid = new NotasitemId(Long.valueOf(filial), Long.valueOf(sequencia), Long.valueOf(itemSequecia));
-        Notasitem notasItem = new Notasitem(notaitemid, BigDecimal.valueOf(valor));
-        
-        session.save(notasItem);  
-        */  
-        
-        
-       //comando com chave composta!
+       
+        //comando com chave composta!
         String d = "select a.id.filial,b.valortotalitem from Notas a "
                 + "join a.notasitens b where a.id.filial = 10";
       
@@ -103,6 +95,19 @@ public class CountriesDAO
         //Object [] -> se tem mais de um
         List<int []> lista = session.createQuery(d)
         .list();
+        
+        */  
+        
+        String filial = "10";
+        int sequencia = 1;
+        int itemSequecia = 1;
+        double valor  = 500.3;
+        
+     
+        NotasitemId notaitemid = new NotasitemId(Long.valueOf(filial), Long.valueOf(sequencia), Long.valueOf(itemSequecia));
+        Notasitem notasItem = new Notasitem(notaitemid, BigDecimal.valueOf(valor));
+        
+        session.save(notasItem);  
 
     }         
     

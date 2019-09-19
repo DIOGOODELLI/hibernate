@@ -17,8 +17,7 @@ public class Countries  implements java.io.Serializable {
 
     public Countries() {
     }
-
-	
+    
     public Countries(String countryId) {
         this.countryId = countryId;
     }
@@ -57,10 +56,6 @@ public class Countries  implements java.io.Serializable {
     public void setLocationses(Set locationses) {
         this.locationses = locationses;
     }
-
-
-
-
 }
 
 
