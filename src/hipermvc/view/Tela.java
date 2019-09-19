@@ -29,17 +29,7 @@ public class Tela extends javax.swing.JFrame {
         initComponents();
         
         setLocationRelativeTo(this);
-        
-        //NO Momento que cria a tela já coloca a data atual
-        jDateChooser1.setDate(java.sql.Date.valueOf(java.time.LocalDate.now()));    
-        String strDate = DateFormat.getDateInstance().format(jDateChooser1.getDate());
-        jTextSemana.setText(getWeek(strDate));
-        
-        jDateChooser1.addPropertyChangeListener((PropertyChangeEvent evt) -> {
-            String strDateAct = DateFormat.getDateInstance().format(jDateChooser1.getDate());
-            jTextSemana.setText(getWeek(strDateAct));
-        });
-        
+        campoData();
     }
 
     
@@ -373,6 +363,8 @@ public class Tela extends javax.swing.JFrame {
         // TODO add your handling code here:
         ConsultaCliente consultacliente = new ConsultaCliente(null, true);
         consultacliente.setVisible(true);
+        if (! consultacliente.getNome().isEmpty())
+            jTextCliente.setText(consultacliente.getNome());
     }//GEN-LAST:event_jButtonConsultaCActionPerformed
 
     /**
@@ -404,39 +396,61 @@ public class Tela extends javax.swing.JFrame {
         });
     }
     
-    public static String getWeek(String date){ //ex 07/03/2017
-    String dayWeek = "---";
-    GregorianCalendar gc = new GregorianCalendar();
-    try {
-        gc.setTime(new SimpleDateFormat("dd/MM/yyyy").parse(date));
-        switch (gc.get(Calendar.DAY_OF_WEEK)) {
-            case Calendar.SUNDAY:
-                dayWeek = "DOM";
+    
+    public void campoData(){
+        
+        //NO Momento que cria a tela já coloca a data atual
+        jDateChooser1.setDate(java.sql.Date.valueOf(java.time.LocalDate.now()));    
+        String strDate = DateFormat.getDateInstance().format(jDateChooser1.getDate());
+        jTextSemana.setText(getWeek(strDate));
+        
+        jDateChooser1.addPropertyChangeListener((PropertyChangeEvent evt) -> {
+            String strDateAct = DateFormat.getDateInstance().format(jDateChooser1.getDate());
+            jTextSemana.setText(getWeek(strDateAct));
+        });
+    } 
+    
+    
+    
+    
+    public static String getWeek(String date){ 
+        String dayWeek = "---";
+        GregorianCalendar gc = new GregorianCalendar();
+        try{
+            gc.setTime(new SimpleDateFormat("dd/MM/yyyy").parse(date));
+            switch (gc.get(Calendar.DAY_OF_WEEK)){
+                case Calendar.SUNDAY:
+                    dayWeek = "DOM";
+                    break;
+                case Calendar.MONDAY:
+                    dayWeek = "SEG";
+                    break;
+                case Calendar.TUESDAY:
+                    dayWeek = "TER";
                 break;
-            case Calendar.MONDAY:
-                dayWeek = "SEG";
-                break;
-            case Calendar.TUESDAY:
-                dayWeek = "TER";
-            break;
-            case Calendar.WEDNESDAY:
-                dayWeek = "QUA";
-                break;
-            case Calendar.THURSDAY:
-                dayWeek = "QUI";
-                break;
-            case Calendar.FRIDAY:
-                dayWeek = "SEX";
-                break;
-            case Calendar.SATURDAY:
-                dayWeek = "SAB";
+                case Calendar.WEDNESDAY:
+                    dayWeek = "QUA";
+                    break;
+                case Calendar.THURSDAY:
+                    dayWeek = "QUI";
+                    break;
+                case Calendar.FRIDAY:
+                    dayWeek = "SEX";
+                    break;
+                case Calendar.SATURDAY:
+                    dayWeek = "SAB";
 
+            }
+        } 
+        catch (ParseException e){
+            e.printStackTrace();
         }
-    } catch (ParseException e) {
-        e.printStackTrace();
+        return dayWeek;
     }
-    return dayWeek;
-}
+    
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;

@@ -48,15 +48,14 @@ Contributor(s):
     <property name="hibernate.connection.password">mdb123</property>
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
-    <mapping resource="hipermvc/model/JobHistory.hbm.xml"/>
-    <mapping resource="hipermvc/model/Departments.hbm.xml"/>
-    <mapping resource="hipermvc/model/Employees.hbm.xml"/>
-    <mapping resource="hipermvc/model/Regions.hbm.xml"/>
-    <mapping resource="hipermvc/model/Jobs.hbm.xml"/>
-    <mapping resource="hipermvc/model/Countries.hbm.xml"/>
-    <mapping resource="hipermvc/model/Locations.hbm.xml"/>
-    <mapping resource="hipermvc/model/Notas.hbm.xml"/>
-    <mapping resource="hipermvc/model/NotasItem.hbm.xml"/>
-    
+    <mapping resource="hipermvc/hbmXmlArquivos/JobHistory.hbm.xml"/>
+    <mapping resource="hipermvc/hbmXmlArquivos/Departments.hbm.xml"/>
+    <mapping resource="hipermvc/hbmXmlArquivos/Employees.hbm.xml"/>
+    <mapping resource="hipermvc/hbmXmlArquivos/Regions.hbm.xml"/>
+    <mapping resource="hipermvc/hbmXmlArquivos/Jobs.hbm.xml"/>
+    <mapping resource="hipermvc/hbmXmlArquivos/Countries.hbm.xml"/>
+    <mapping resource="hipermvc/hbmXmlArquivos/Locations.hbm.xml"/>
+    <mapping resource="hipermvc/hbmXmlArquivos/Notas.hbm.xml"/>
+    <mapping resource="hipermvc/hbmXmlArquivos/NotasItem.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

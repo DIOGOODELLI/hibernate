@@ -19,6 +19,9 @@ public class ConsultaCliente extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
+    
+    String nome;
+    
     public ConsultaCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -136,13 +139,10 @@ public class ConsultaCliente extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+       
         int row = jTable1.getSelectedRow();
-        
-        int colunn = jTable1.getSelectedColumn();
-        String nome = (String) jTable1.getModel().getValueAt(row, 0);
-        
+        setNome(jTable1.getModel().getValueAt(row, 0).toString());
         setVisible(false);
-
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -151,9 +151,7 @@ public class ConsultaCliente extends javax.swing.JDialog {
 
     private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
-        {
-           setVisible(false);    
-        }
+           setVisible(false);            
     }//GEN-LAST:event_jTable1KeyPressed
 
     /**
@@ -196,6 +194,13 @@ public class ConsultaCliente extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
