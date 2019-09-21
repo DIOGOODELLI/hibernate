@@ -191,14 +191,19 @@
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextCliente" pref="104" max="32767" attributes="0"/>
-                                  <Component id="jTextEdital" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jTextCliente" pref="104" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jButtonConsultaC" min="-2" pref="20" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jTextEdital" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jScrollPane2" min="-2" pref="207" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonConsultaC" min="-2" pref="27" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane2" min="-2" pref="207" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
                   </Group>
@@ -303,9 +308,13 @@
                   <Image iconType="3" name="/hipermvc/Imagens/icon.png"/>
                 </Property>
                 <Property name="alignmentY" type="float" value="0.0"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
                 <Property name="borderPainted" type="boolean" value="false"/>
+                <Property name="iconTextGap" type="int" value="1"/>
                 <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-                  <Insets value="[2, 2, 2, 2]"/>
+                  <Insets value="[0, 0, 0, 0]"/>
                 </Property>
               </Properties>
               <Events>

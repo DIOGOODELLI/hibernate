@@ -40,8 +40,10 @@ public class JFrame extends javax.swing.JFrame {
         campoData();
         
        
-        //ComponentBorder cb = new ComponentBorder( jButtonConsultaC );
-        //cb.install( jTextCliente );
+        ComponentBorder cb = new ComponentBorder( jButtonConsultaC );
+        cb.setGap(1);
+        cb.setAdjustInsets(false);
+        cb.install( jTextCliente );
     }
 
     /**
@@ -143,8 +145,10 @@ public class JFrame extends javax.swing.JFrame {
 
         jButtonConsultaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hipermvc/Imagens/icon.png"))); // NOI18N
         jButtonConsultaC.setAlignmentY(0.0F);
+        jButtonConsultaC.setBorder(null);
         jButtonConsultaC.setBorderPainted(false);
-        jButtonConsultaC.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jButtonConsultaC.setIconTextGap(1);
+        jButtonConsultaC.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jButtonConsultaC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConsultaCActionPerformed(evt);
@@ -234,12 +238,15 @@ public class JFrame extends javax.swing.JFrame {
                                 .addComponent(jTextAbeSemana, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(jTextSemana)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                            .addComponent(jTextEdital))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonConsultaC, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jTextCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButtonConsultaC, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextEdital))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(163, 163, 163))
             .addComponent(jSeparator1)
         );
