@@ -40,7 +40,7 @@ public class TelaTeste extends javax.swing.JFrame {
     
     //Senha L6u@Wya7Cf3b75T
     String[] ColunasComConsulta = new String [] {"0"};
-    int controlador = 0;
+    boolean jaGerou = false;
     /*       
         Colunas: 
         "País" -> 0 
@@ -52,8 +52,21 @@ public class TelaTeste extends javax.swing.JFrame {
         
         final TableCellEditor originalEditor = jTable2.getDefaultEditor(String.class);
         
-        System.err.println(originalEditor);
-                
+        jTable2.addKeyListener(new KeyListener() {
+             @Override
+             public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_F3)
+                {
+                     String campo = AbrirConsulta();        
+                     jTable2.setValueAt(campo, jTable2.getSelectedRow(), jTable2.getSelectedColumn());
+                }
+             }
+             @Override
+             public void keyTyped(KeyEvent e) {}
+             @Override
+             public void keyReleased(KeyEvent e) {}
+         });
+
                 
         
         for (String ColunasComConsulta1 : ColunasComConsulta) {
@@ -117,29 +130,18 @@ public class TelaTeste extends javax.swing.JFrame {
                         panel.setBackground(table.getBackground());
                     }
                     JButton dotButton = new JButton("...");
-                    
                     	dotButton.addActionListener((ActionEvent e) -> {
-                            String editedText = showTextEditDialog(
-                                    "Edit Text", 350, 100,
-                                    textField.getText());
-                            if (editedText != null)
-                                textField.setText(editedText);
+                           String campo = AbrirConsulta();
+                           textField.setText(campo);
                     });
-                    
-           
-         
+                        
                     //Apenas o add key já serve, se deixar ele cria vários 
-                    if (controlador == 0)
+                    if (! jaGerou)
                     {
-                        controlador ++;
+                        jaGerou = true;
                         jTable2.addKeyListener(new KeyListener() {
                             @Override
-                            public void keyPressed(KeyEvent e) {
-                               if (e.getKeyCode() == KeyEvent.VK_F3)
-                               {
-                                    AbrirConsulta();
-                               }
-                            }
+                            public void keyPressed(KeyEvent e) {}
                             @Override
                             public void keyTyped(KeyEvent e) {
                                 //Quando acionado pelo "espaço". precisa do focus no component
@@ -156,19 +158,15 @@ public class TelaTeste extends javax.swing.JFrame {
                             public void keyPressed(KeyEvent e) {
                                if (e.getKeyCode() == KeyEvent.VK_F3)
                                {
-                                   String editedText = showTextEditDialog(
-                                    "Edit Text", 350, 100,
-                                    textField.getText());
-                                    
-                                    if (editedText != null)
-                                     textField.setText(editedText);
+                                    String campo = AbrirConsulta();
+                                    textField.setText(campo);
                                }
                             }
 
                             @Override
-                            public void keyTyped(KeyEvent e) {}
+                            public void keyTyped(KeyEvent e){}
                             @Override
-                            public void keyReleased(KeyEvent e) {}
+                            public void keyReleased(KeyEvent e){}
                         });
                     }
                     panel.add(dotButton, BorderLayout.EAST);
@@ -653,26 +651,26 @@ public class TelaTeste extends javax.swing.JFrame {
         });
     }
     
-    public void  AbrirConsulta()
+    public String  AbrirConsulta()
     {
         //Aqui estão apenas as colunas editáveis
         int col = jTable2.getSelectedColumn();
-        int row = jTable2.getSelectedRow();
-           
-        DefaultTableModel model =(DefaultTableModel) jTable2.getModel();   
+        String retorno = "";
         switch(col){
             
             case 0:
                ConsultaCliente consultacliente = new ConsultaCliente(null, true);
                consultacliente.setVisible(true);
-               model.setValueAt("Retorno", row, col);
+               retorno = "Retorno";
                break;
             case 3:
-                System.out.println("Abre Coluna 3:"+ model.getValueAt(row, col));
+                //System.out.println("Abre Coluna 3:"+ model.getValueAt(row, col));
                 break;
             default:
-                System.out.println("Os outros não abre consulta!");
+               // System.out.println("Os outros não abre consulta!");
         }
+        
+        return retorno;
     }
     
     
