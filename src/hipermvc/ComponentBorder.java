@@ -157,11 +157,13 @@ public class ComponentBorder implements Border
 //  Implement the Border interface
 //
 
+        @Override
 	public Insets getBorderInsets(Component c)
 	{
 		return borderInsets;
 	}
 
+        @Override
 	public boolean isBorderOpaque()
 	{
 		return false;
@@ -171,6 +173,7 @@ public class ComponentBorder implements Border
 	 *  In this case a real component is to be painted. Setting the location
 	 *  of the component will cause it to be painted at that location.
 	 */
+        @Override
 	public void paintBorder(Component c, Graphics g, int x, int y, int width, int height)
 	{
 		float x2 = (width  - component.getWidth())  * component.getAlignmentX() + x;
@@ -223,36 +226,37 @@ public class ComponentBorder implements Border
 	{
 		borderInsets = new Insets(0, 0, 0, 0);
 
-		//  The insets will only be updated for the edge the component will be
-		//  diplayed on.
-		//
-		//  The X, Y alignment of the component is controlled by both the edge
-		//  and alignment parameters
 
-		if (edge == Edge.TOP)
-		{
-			borderInsets.top = component.getPreferredSize().height + gap;
-			component.setAlignmentX(alignment);
-			component.setAlignmentY(0.0f);
-		}
-		else if (edge == Edge.BOTTOM)
-		{
-			borderInsets.bottom = component.getPreferredSize().height + gap;
-			component.setAlignmentX(alignment);
-			component.setAlignmentY(1.0f);
-		}
-		else if (edge == Edge.LEFT)
-		{
-			borderInsets.left = component.getPreferredSize().width + gap;
-			component.setAlignmentX(0.0f);
-			component.setAlignmentY(alignment);
-		}
-		else if (edge == Edge.RIGHT)
-		{
-			borderInsets.right = component.getPreferredSize().width + gap;
-			component.setAlignmentX(1.0f);
-			component.setAlignmentY(alignment);
-		}
+		if (null != edge)
+		//  The insets will only be updated for the edge the component will be
+            //  diplayed on.
+            //
+            //  The X, Y alignment of the component is controlled by both the edge
+            //  and alignment parameters
+            switch (edge) {
+                case TOP:
+                    borderInsets.top = component.getPreferredSize().height + gap;
+                    component.setAlignmentX(alignment);
+                    component.setAlignmentY(0.0f);
+                    break;
+                case BOTTOM:
+                    borderInsets.bottom = component.getPreferredSize().height + gap;
+                    component.setAlignmentX(alignment);
+                    component.setAlignmentY(1.0f);
+                    break;
+                case LEFT:
+                    borderInsets.left = component.getPreferredSize().width + gap;
+                    component.setAlignmentX(0.0f);
+                    component.setAlignmentY(alignment);
+                    break;
+                case RIGHT:
+                    borderInsets.right = component.getPreferredSize().width + gap;
+                    component.setAlignmentX(1.0f);
+                    component.setAlignmentY(alignment);
+                    break;
+                default:
+                    break;
+            }
 
 		if (adjustInsets)
 			adjustBorderInsets();

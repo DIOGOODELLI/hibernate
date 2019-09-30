@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hipermvc.view;
 
-
 import hipermvc.ComponentBorder;
-import java.awt.FlowLayout;
+import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -15,11 +9,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
+import javax.swing.JTextField;
 
 /**
  *
@@ -39,11 +33,10 @@ public class JFrame extends javax.swing.JFrame {
         initComponents();
         
         setLocationRelativeTo(this);
-        
         campoData();
-        
         botaoDentroDosCampos();
         
+        //gridProduto();
     }
 
 
@@ -86,7 +79,9 @@ public class JFrame extends javax.swing.JFrame {
         jTextEnvSem = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jButtonConsultaC1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -193,16 +188,6 @@ public class JFrame extends javax.swing.JFrame {
 
         jSeparator1.setBackground(new java.awt.Color(160, 160, 160));
 
-        jButtonConsultaC1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/hipermvc/Imagens/ic.png"))); // NOI18N
-        jButtonConsultaC1.setAlignmentY(0.0F);
-        jButtonConsultaC1.setBorder(null);
-        jButtonConsultaC1.setBorderPainted(false);
-        jButtonConsultaC1.setIconTextGap(1);
-        jButtonConsultaC1.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonConsultaC1.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButtonConsultaC1.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButtonConsultaC1.setPreferredSize(new java.awt.Dimension(25, 16));
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -245,9 +230,7 @@ public class JFrame extends javax.swing.JFrame {
                                     .addComponent(jTextCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                                     .addComponent(jTextEdital))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonConsultaC, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonConsultaC1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButtonConsultaC, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(163, 163, 163))
@@ -256,18 +239,15 @@ public class JFrame extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonConsultaC, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel3)
-                                .addComponent(jTextCliente)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextEdital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButtonConsultaC1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonConsultaC, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jTextCliente)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextEdital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -318,6 +298,32 @@ public class JFrame extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Dados", jPanel3);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Produtos", jPanel2);
 
         jButton8.setText("Sair");
 
@@ -374,15 +380,7 @@ public class JFrame extends javax.swing.JFrame {
         jTextCliente.setText(consultacliente.getNome());
     }//GEN-LAST:event_jButtonConsultaCActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows Classic".equals(info.getName())) {
@@ -393,16 +391,18 @@ public class JFrame extends javax.swing.JFrame {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new JFrame().setVisible(true);
             
         });
     }
+    
+    
+    public void gridProduto()
+    {
+
+    }       
     
     
      public void campoData(){
@@ -471,10 +471,10 @@ public class JFrame extends javax.swing.JFrame {
     public void botaoDentroDosCampos()
     {
         //Botão dentro dos campos
-        ComponentBorder cb1 = new ComponentBorder( jButtonConsultaC1 );
-        cb1.setGap(1);
-        cb1.setAdjustInsets(false);
-        cb1.install( jTextCliente );
+       // ComponentBorder cb1 = new ComponentBorder( jButtonConsultaC1 );
+       // cb1.setGap(1);
+       // cb1.setAdjustInsets(false);
+        //cb1.install( jTextCliente );
 
         ComponentBorder cb = new ComponentBorder( jButtonConsultaC );
         cb.setGap(1);
@@ -527,7 +527,6 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButtonConsultaC;
-    private javax.swing.JButton jButtonConsultaC1;
     private com.toedter.calendar.JDateChooser jDateAbertura;
     private com.toedter.calendar.JDateChooser jDateAmostra;
     private com.toedter.calendar.JDateChooser jDateEntrega;
@@ -545,10 +544,13 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextAbeSemana;
     private javax.swing.JTextField jTextAmoSen;
     private javax.swing.JTextArea jTextAreaObj;

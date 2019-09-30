@@ -21,6 +21,7 @@ public class Countries  implements java.io.Serializable {
     public Countries(String countryId) {
         this.countryId = countryId;
     }
+    
     public Countries(String countryId, Regions regions, String countryName, Set locationses) {
        this.countryId = countryId;
        this.regions = regions;
