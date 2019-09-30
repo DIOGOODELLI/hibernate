@@ -57,8 +57,8 @@ public class TelaTeste extends javax.swing.JFrame {
              public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_F3)
                 {
-                     String campo = AbrirConsulta();        
-                     jTable2.setValueAt(campo, jTable2.getSelectedRow(), jTable2.getSelectedColumn());
+                    String campo = AbrirConsulta();        
+                    jTable2.setValueAt(campo, jTable2.getSelectedRow(), jTable2.getSelectedColumn());
                 }
              }
              @Override
@@ -103,8 +103,7 @@ public class TelaTeste extends javax.swing.JFrame {
                 public void addCellEditorListener(CellEditorListener l) {
                     originalEditor.addCellEditorListener(l);
                 }
-
-          
+                
                 @Override
                 public void removeCellEditorListener(CellEditorListener l) {
                     originalEditor.removeCellEditorListener(l);
@@ -144,13 +143,11 @@ public class TelaTeste extends javax.swing.JFrame {
                             public void keyPressed(KeyEvent e) {}
                             @Override
                             public void keyTyped(KeyEvent e) {
-                                //Quando acionado pelo "espaço". precisa do focus no component
-                                component.requestFocus();
+                                component.requestFocus();//Foco ao acionar
                             }
                             @Override
                             public void keyReleased(KeyEvent e) {}
                         });
- 
                         
                         //Key do component
                         component.addKeyListener(new KeyListener() {
@@ -162,7 +159,6 @@ public class TelaTeste extends javax.swing.JFrame {
                                     textField.setText(campo);
                                }
                             }
-
                             @Override
                             public void keyTyped(KeyEvent e){}
                             @Override
